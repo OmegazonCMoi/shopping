@@ -2,7 +2,7 @@
 
 import {Button, Checkbox, TextField} from "ui";
 import {IconPlus, IconTrash} from "justd-icons";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Item} from "@/types/item";
 
 export default function Home() {
@@ -68,7 +68,7 @@ export default function Home() {
             </div>
             <div id='list' className='flex flex-col w-full space-y-2'>
                 {[...items]
-                    .sort((a: any, b: any) => a.completed - b.completed)
+                    .sort((a: Item, b: Item) => Number(a.completed) - Number(b.completed))
                     .map((item) => (
                         <div className='px-1 py-1 rounded-xl border border-neutral-800 flex justify-between items-center' key={item.id}>
                             <div className='flex'>
